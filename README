@@ -8,11 +8,11 @@ formats such as, e.g., the W3C's XML-based Scaleable Vector Graphic
 formats EPS, PS, FIG, SVG, and raster image formats PNG and JPEG.
 
 Runtime requirements:
-  cygwin-1.5.21-1
+  cygwin-1.5.21-2
   expat-1.95.8-1
   ghostscript-base-8.50-1
   libX11_6-1.0.2-1
-  libfreetype26-2.1.10-1
+  libfreetype26-2.2.1-1
   libjpeg62-6b-11
   libpng12-1.2.8-2
 (gdk-pixbuf2-wmf)
@@ -20,11 +20,11 @@ Runtime requirements:
 
 Build requirements:
 (besides corresponding -devel packages)
-  cygwin-1.5.21-1
-  autoconf2.5-2.59-2
+  cygwin-1.5.21-2
+  autoconf2.5-2.60-1
   automake1.9-1.9.6-1
-  binutils-20050610-1
-  cygport-0.2.4-1
+  binutils-20060817-1
+  cygport-0.2.5-1
   gawk-3.1.5-2
   gcc-core-3.4.4-1
   libtool1.5-1.5.22-1
@@ -394,6 +394,12 @@ Files included in the documentation package:
 ------------------
 
 Port Notes:
+
+----- version 0.2.8.4-3 -----
+Fix abuse of cygpath in libwmf-config.
+
+----- version 0.2.8.4-2 -----
+Security patch.
 
 ----- version 0.2.8.4-1 -----
 Initial release for Cygwin.

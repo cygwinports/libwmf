@@ -1,5 +1,5 @@
 category: Libs Graphics
-requires: cygwin expat libX11 libfreetype2-devel jpeg libpng12-devel
+requires: cygwin expat libX11-devel libfreetype2-devel jpeg libpng12-devel
 external-source: libwmf
 sdesc: "MS Windows Metafile Format library (development)"
 ldesc: "libwmf is a library for reading vector images in Microsoft's
