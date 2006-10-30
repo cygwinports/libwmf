@@ -1,0 +1,18 @@
+DESCRIPTION="Windows Metafile library"
+HOMEPAGE="http://wvware.sourceforge.net/"
+SRC_URI="mirror://sourceforge/wvware/${P}.tar.gz"
+
+PKG_NAMES="${PN} ${PN}027 ${PN}-devel ${PN}-doc gdk-pixbuf2-wmf"
+PKG_HINTS="setup runtime devel doc gdkpixbuf"
+PKG_CONTENTS[0]="usr/bin/${PN}-fontmap usr/bin/*.exe usr/share/doc/Cygwin/
+	usr/share/doc/${P}/[A-Z]* usr/share/${PN}/"
+PKG_CONTENTS[1]='usr/bin/*.dll'
+PKG_CONTENTS[2]="usr/bin/${PN}-config usr/include/ usr/lib/lib*"
+PKG_CONTENTS[3]='etc/ usr/lib/gtk-2.0/'
+PKG_CONTENTS[4]="usr/share/doc/${P}/[a-z]*"
+
+CYGCONF_ARGS="--with-expat --with-freetype --with-zlib --with-png
+	--with-jpeg --with-docdir=/usr/share/doc/${P}
+	--with-fontdir=/usr/share/libwmf/fonts
+	--with-gsfontmap=/usr/share/ghostscript/$(gs --version)/lib/Fontmap.GS
+	--with-gsfontdir=/usr/share/ghostscript/fonts"
