@@ -1,5 +1,5 @@
 category: Graphics Gnome
-requires: cygwin gdk-pixbuf2 libwmf027
+requires: gdk-pixbuf2 libwmf027
 external-source: libwmf
 sdesc: "MS Windows Metafile Format library (GdkPixbuf loader)"
 ldesc: "libwmf is a library for reading vector images in Microsoft's

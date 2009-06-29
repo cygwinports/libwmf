@@ -1,5 +1,5 @@
 category: Libs Graphics
-requires: cygwin expat ghostscript-base libX11_6 libfreetype26 libjpeg62 libpng12
+requires: expat ghostscript-base libX11_6 libfreetype26 libjpeg62 libpng12
 external-source: libwmf
 sdesc: "MS Windows Metafile Format library (runtime)"
 ldesc: "libwmf is a library for reading vector images in Microsoft's
