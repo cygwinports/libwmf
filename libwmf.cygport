@@ -1,0 +1,33 @@
+NAME="libwmf"
+VERSION=0.2.8.4
+RELEASE=4
+CATEGORY="Libs"
+SUMMARY="MS Windows Metafile Format library"
+DESCRIPTION="libwmf is a library for reading vector images in Microsoft's
+native Windows Metafile Format (WMF) and for either (a) displaying them
+in, e.g., an X window; or (b) converting them to more standard/open file
+formats such as, e.g., the W3C's XML-based Scaleable Vector Graphic
+(SVG) format. Currently bindings exist for conversion to vector image
+formats EPS, PS, FIG, SVG, and raster image formats PNG and JPEG."
+HOMEPAGE="http://wvware.sourceforge.net/"
+SRC_URI="mirror://sourceforge/wvware/libwmf-${VERSION}.tar.gz"
+PATCH_URI="
+	libwmf-Makefileam.patch
+	libwmf-configin.patch
+"
+
+PKG_NAMES="${NAME} ${NAME}027 ${NAME}-devel ${NAME}-doc gdk-pixbuf2-wmf"
+libwmf_CONTENTS="usr/bin/${NAME}-fontmap usr/bin/*.exe usr/share/doc/Cygwin/
+	usr/share/doc/${NAME}/[A-Z]* usr/share/${NAME}/"
+libwmf027_CATEGORY="Libs"
+libwmf027_CONTENTS="usr/bin/cygwmf*-0-2-7.dll"
+libwmf_devel_CATEGORY="Libs"
+libwmf_devel_CONTENTS="usr/bin/libwmf-config usr/include/ usr/lib/lib*"
+gdk_pixbuf2_wmf_CONTENTS='etc/ usr/lib/gtk-2.0/'
+libwmf_doc_CONTENTS="usr/share/doc/${NAME}/[a-z]*"
+
+CYGCONF_ARGS="--with-expat --with-freetype --with-zlib --with-png
+	--with-jpeg --with-docdir=/usr/share/doc/${NAME}
+	--with-fontdir=/usr/share/libwmf/fonts
+	--with-gsfontmap=/usr/share/ghostscript/$(gs --version)/lib/Fontmap.GS
+	--with-gsfontdir=/usr/share/ghostscript/fonts"
