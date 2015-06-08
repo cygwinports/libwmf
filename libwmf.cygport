@@ -1,6 +1,6 @@
 NAME="libwmf"
 VERSION=0.2.8.4
-RELEASE=4
+RELEASE=13
 CATEGORY="Libs"
 SUMMARY="MS Windows Metafile Format library"
 DESCRIPTION="libwmf is a library for reading vector images in Microsoft's
@@ -17,13 +17,17 @@ PATCH_URI="
 "
 
 PKG_NAMES="${NAME} ${NAME}027 ${NAME}-devel ${NAME}-doc gdk-pixbuf2-wmf"
-libwmf_CONTENTS="usr/bin/${NAME}-fontmap usr/bin/*.exe usr/share/doc/Cygwin/
+libwmf_CONTENTS="usr/bin/${NAME}-fontmap usr/bin/*.exe
 	usr/share/doc/${NAME}/[A-Z]* usr/share/${NAME}/"
 libwmf027_CATEGORY="Libs"
+libwmf027_REQUIRES="ghostscript"
 libwmf027_CONTENTS="usr/bin/cygwmf*-0-2-7.dll"
 libwmf_devel_CATEGORY="Libs"
+libwmf_devel_REQUIRES="libexpat-devel libfreetype-devel libjpeg-devel libpng-devel libX11-devel zlib-devel"
 libwmf_devel_CONTENTS="usr/bin/libwmf-config usr/include/ usr/lib/lib*"
-gdk_pixbuf2_wmf_CONTENTS='etc/ usr/lib/gtk-2.0/'
+libwmf_devel_CATEGORY="Libs"
+gdk_pixbuf2_wmf_CATEGORY="GNOME"
+gdk_pixbuf2_wmf_CONTENTS='etc/ usr/lib/gdk-pixbuf-2.0/'
 libwmf_doc_CONTENTS="usr/share/doc/${NAME}/[a-z]*"
 
 CYGCONF_ARGS="--with-expat --with-freetype --with-zlib --with-png
@@ -31,3 +35,5 @@ CYGCONF_ARGS="--with-expat --with-freetype --with-zlib --with-png
 	--with-fontdir=/usr/share/libwmf/fonts
 	--with-gsfontmap=/usr/share/ghostscript/$(gs --version)/lib/Fontmap.GS
 	--with-gsfontdir=/usr/share/ghostscript/fonts"
+
+KEEP_LA_FILES=none
