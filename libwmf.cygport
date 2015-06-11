@@ -1,6 +1,6 @@
 NAME="libwmf"
 VERSION=0.2.8.4
-RELEASE=13
+RELEASE=14
 CATEGORY="Libs"
 SUMMARY="MS Windows Metafile Format library"
 DESCRIPTION="libwmf is a library for reading vector images in Microsoft's
@@ -11,7 +11,23 @@ formats such as, e.g., the W3C's XML-based Scaleable Vector Graphic
 formats EPS, PS, FIG, SVG, and raster image formats PNG and JPEG."
 HOMEPAGE="http://wvware.sourceforge.net/"
 SRC_URI="mirror://sourceforge/wvware/libwmf-${VERSION}.tar.gz"
+#	http://pkgs.fedoraproject.org/cgit/libwmf.git/plain/libwmf-0.2.8.3-nodocs.patch
 PATCH_URI="
+	http://pkgs.fedoraproject.org/cgit/libwmf.git/plain/libwmf-0.2.8.3-relocatablefonts.patch
+	http://pkgs.fedoraproject.org/cgit/libwmf.git/plain/libwmf-0.2.8.4-fallbackfont.patch
+	http://pkgs.fedoraproject.org/cgit/libwmf.git/plain/libwmf-0.2.8.4-deps.patch
+	http://pkgs.fedoraproject.org/cgit/libwmf.git/plain/libwmf-0.2.8.4-intoverflow.patch
+	http://pkgs.fedoraproject.org/cgit/libwmf.git/plain/libwmf-0.2.8.4-reducesymbols.patch
+	http://pkgs.fedoraproject.org/cgit/libwmf.git/plain/libwmf-0.2.8.4-useafterfree.patch
+	http://pkgs.fedoraproject.org/cgit/libwmf.git/plain/libwmf-0.2.8.4-pixbufloaderdir.patch
+	http://pkgs.fedoraproject.org/cgit/libwmf.git/plain/libwmf-0.2.8.4-CVE-2007-0455.patch
+	http://pkgs.fedoraproject.org/cgit/libwmf.git/plain/libwmf-0.2.8.4-CVE-2007-3472.patch
+	http://pkgs.fedoraproject.org/cgit/libwmf.git/plain/libwmf-0.2.8.4-CVE-2007-3473.patch
+	http://pkgs.fedoraproject.org/cgit/libwmf.git/plain/libwmf-0.2.8.4-CVE-2007-3477.patch
+	http://pkgs.fedoraproject.org/cgit/libwmf.git/plain/libwmf-0.2.8.4-CVE-2007-2756.patch
+	http://pkgs.fedoraproject.org/cgit/libwmf.git/plain/libwmf-0.2.8.4-CAN-2004-0941.patch
+	http://pkgs.fedoraproject.org/cgit/libwmf.git/plain/libwmf-0.2.8.4-CVE-2009-3546.patch
+	http://pkgs.fedoraproject.org/cgit/libwmf.git/plain/libwmf-0.2.8.4-CVE-2015-0848.patch
 	libwmf-Makefileam.patch
 	libwmf-configin.patch
 "
@@ -30,10 +46,20 @@ gdk_pixbuf2_wmf_CATEGORY="GNOME"
 gdk_pixbuf2_wmf_CONTENTS='etc/ usr/lib/gdk-pixbuf-2.0/'
 libwmf_doc_CONTENTS="usr/share/doc/${NAME}/[a-z]*"
 
+DISTCLEANFILES="configure.ac"
+NO_AUTOHEADER=1
+
 CYGCONF_ARGS="--with-expat --with-freetype --with-zlib --with-png
 	--with-jpeg --with-docdir=/usr/share/doc/${NAME}
 	--with-fontdir=/usr/share/libwmf/fonts
 	--with-gsfontmap=/usr/share/ghostscript/$(gs --version)/lib/Fontmap.GS
 	--with-gsfontdir=/usr/share/ghostscript/fonts"
+
+src_install() {
+	cd ${B}
+	cyginstall
+
+	rm -fr ${D}/usr/include/libwmf/gd/
+}
 
 KEEP_LA_FILES=none
