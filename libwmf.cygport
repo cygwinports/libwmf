@@ -1,6 +1,6 @@
 NAME="libwmf"
 VERSION=0.2.8.4
-RELEASE=15
+RELEASE=16
 CATEGORY="Libs"
 SUMMARY="MS Windows Metafile Format library"
 DESCRIPTION="libwmf is a library for reading vector images in Microsoft's
